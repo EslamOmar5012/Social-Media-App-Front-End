@@ -1,0 +1,4808 @@
+{
+  "info": {
+    "_postman_id": "c5f51ced-1ab9-4046-9822-0422d56eedc0",
+    "name": "Social Media App",
+    "description": "Comprehensive API collection for the Social Media App.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "36639501"
+  },
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Signup",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"username\": \"eslam_user\",\n    \"email\": \"eslam.O.elkhabery@gmail.com\",\n    \"password\": \"Password123\",\n    \"confirmPassword\": \"Password123\",\n    \"phone\": \"01234567890\",\n    \"age\": 25,\n    \"gender\": \"male\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/auth/signup",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "auth",
+                "signup"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "success",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"username\": \"eslam_user\",\n    \"email\": \"eslamelkhabery60@gmail.com\",\n    \"password\": \"Password123\",\n    \"confirmPassword\": \"Password123\",\n    \"phone\": \"01234567890\",\n    \"age\": 25,\n    \"gender\": \"male\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/auth/signup",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "auth",
+                    "signup"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "258"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"102-YHx7DHgn+LFvW+5gH1qsGKsASSA\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 02 May 2026 11:58:53 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"success\",\n    \"message\": \"User signed up successfully\",\n    \"code\": 201,\n    \"data\": {\n        \"message\": \"User signed up successfully\",\n        \"user\": {\n            \"id\": \"69f5e6fc52b39b4ad4e654c4\",\n            \"username\": \"eslam_user\",\n            \"email\": \"eslamelkhabery60@gmail.com\",\n            \"phone\": \"01234567890\",\n            \"role\": \"user\"\n        }\n    }\n}"
+            },
+            {
+              "name": "fail",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"username\": \"eslam_user\",\n    \"email\": \"eslamelkhabery60@gmail.com\",\n    \"password\": \"Password123\",\n    \"confirmPassword\": \"Password123\",\n    \"phone\": \"01234567890\",\n    \"age\": 25,\n    \"gender\": \"male\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/auth/signup",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "auth",
+                    "signup"
+                  ]
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "77"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"4d-SPKCQNmuXamp0ITML+YASvmDzxA\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 02 May 2026 11:59:17 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"error\",\n    \"message\": \"User with this email already exists\",\n    \"code\": 409\n}"
+            }
+          ]
+        },
+        {
+          "name": "Login",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "var jsonData = JSON.parse(responseBody);",
+                  "postman.setEnvironmentVariable(\"accessToken\", jsonData.accessToken);",
+                  "postman.setEnvironmentVariable(\"refreshToken\", jsonData.refreshToken);"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"email\": \"eslam.O.elkhabery@gmail.com\",\r\n    \"password\": \"Password123\",\r\n    \"fcmToken\": \"e60nJaCVx2Dq8TbF0Xccvh:APA91bHVhPpTPrCqjUH9DFweT2iJk6yaJ7ruShfI69hIfzsTMRrZg9fk_jKoUclTPtrXsvzBbVUvPrJXmy-Mu_2LqbBXEz445qpU_FTCS0Z9dqycVGKdPpw\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/auth/login",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "auth",
+                "login"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "success",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"email\": \"eslamelkhabery60@gmail.com\",\r\n    \"password\": \"Password123\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/auth/login",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "auth",
+                    "login"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "545"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"221-gducWJBgex78Jax1axpaG4UZ/mM\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 02 May 2026 12:02:06 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"success\",\n    \"message\": \"User logged in successfully\",\n    \"code\": 200,\n    \"data\": {\n        \"message\": \"User logged in successfully\",\n        \"accessToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWY1ZTZmYzUyYjM5YjRhZDRlNjU0YzQiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NzcyMzMyNiwiZXhwIjoxNzc3NzI2OTI2fQ.3NGEZ3y9F_W8iNtcFb_VaUgf1AfhBjdG6KssHC_bC5w\",\n        \"refreshToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWY1ZTZmYzUyYjM5YjRhZDRlNjU0YzQiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NzcyMzMyNiwiZXhwIjoxNzc4MzI4MTI2fQ.CGrhjf-5Is9UVXmtok2Xkwkp3uPdtcEarGGZfCpuQZE\"\n    }\n}"
+            },
+            {
+              "name": "fail",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"email\": \"eslam.test@gmail.com\",\n    \"password\": \"Password123\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/auth/login",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "auth",
+                    "login"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "67"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"43-6uDXnIjTOzBtv4+VppXCiiA67Yc\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 02 May 2026 12:00:49 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"error\",\n    \"message\": \"Invalid email or password\",\n    \"code\": 401\n}"
+            }
+          ]
+        },
+        {
+          "name": "Confirm Email",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"email\": \"eslam.O.elkhabery@gmail.com\",\n    \"otp\": \"354286\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/auth/confirm-email",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "auth",
+                "confirm-email"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "success",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"email\": \"eslamelkhabery60@gmail.com\",\n    \"otp\": \"882383\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/auth/confirm-email",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "auth",
+                    "confirm-email"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "122"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"7a-1U6h9Fu+KC3dTdKD9DDRPMlxSK8\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 02 May 2026 12:00:15 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"success\",\n    \"message\": \"Email confirmed successfully\",\n    \"code\": 200,\n    \"data\": {\n        \"message\": \"Email confirmed successfully\"\n    }\n}"
+            },
+            {
+              "name": "fail",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"email\": \"eslamelkhabery60@gmail.com\",\n    \"otp\": \"882383\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/auth/confirm-email",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "auth",
+                    "confirm-email"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "64"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"40-jNKWPC/MitOWfQH0c45hF9vgzI0\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 02 May 2026 12:00:25 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"error\",\n    \"message\": \"Invalid or expired OTP\",\n    \"code\": 401\n}"
+            }
+          ]
+        },
+        {
+          "name": "Resend Confirm Email",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"email\": \"eslamelkhabery60@gmail.com\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/auth/resend-confirm-email",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "auth",
+                "resend-confirm-email"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "success",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"email\": \"eslamelkhabery60@gmail.com\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/auth/resend-confirm-email",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "auth",
+                    "resend-confirm-email"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "138"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"8a-D/TPIRXd7SOKqmVjmCmOCmbck54\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 02 May 2026 11:59:40 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"success\",\n    \"message\": \"Confirmation OTP resent successfully\",\n    \"code\": 200,\n    \"data\": {\n        \"message\": \"Confirmation OTP resent successfully\"\n    }\n}"
+            },
+            {
+              "name": "fail",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"email\": \"eslamelkhabery60@gmail.com\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/auth/resend-confirm-email",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "auth",
+                    "resend-confirm-email"
+                  ]
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "68"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"44-9msvfZx8X5GiKxC4e/kqZcIDlYc\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 02 May 2026 12:00:36 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"error\",\n    \"message\": \"Email is already confirmed\",\n    \"code\": 409\n}"
+            }
+          ]
+        },
+        {
+          "name": "Forgot Password",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"email\": \"eslamelkhabery60@gmail.com\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/auth/forgot-password",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "auth",
+                "forgot-password"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "fail",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"email\": \"eslam.test@gmail.com\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/auth/forgot-password",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "auth",
+                    "forgot-password"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "56"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"38-DVVkP92dbJ3Ad/laGhxwcZTD2cI\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 02 May 2026 12:04:04 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"error\",\n    \"message\": \"User not found\",\n    \"code\": 401\n}"
+            },
+            {
+              "name": "success",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"email\": \"eslamelkhabery60@gmail.com\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/auth/forgot-password",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "auth",
+                    "forgot-password"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "138"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"8a-OunPcFOQgHxoXBKOr4XOVVPgKrM\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 02 May 2026 12:04:29 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"success\",\n    \"message\": \"Password reset OTP sent successfully\",\n    \"code\": 200,\n    \"data\": {\n        \"message\": \"Password reset OTP sent successfully\"\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Reset Password",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"email\": \"eslamelkhabery60@gmail.com\",\n    \"otp\": \"598921\",\n    \"newPassword\": \"NewPassword123\",\n    \"confirmPassword\": \"NewPassword123\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/auth/reset-password",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "auth",
+                "reset-password"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "success",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"email\": \"eslamelkhabery60@gmail.com\",\n    \"otp\": \"598921\",\n    \"newPassword\": \"NewPassword123\",\n    \"confirmPassword\": \"NewPassword123\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/auth/reset-password",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "auth",
+                    "reset-password"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "120"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"78-nJSZ1sdoSTnciTKscZge4ks+o9w\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 02 May 2026 12:05:25 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"success\",\n    \"message\": \"Password reset successfully\",\n    \"code\": 200,\n    \"data\": {\n        \"message\": \"Password reset successfully\"\n    }\n}"
+            },
+            {
+              "name": "fail",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"email\": \"eslamelkhabery60@gmail.com\",\n    \"otp\": \"598921\",\n    \"newPassword\": \"NewPassword123\",\n    \"confirmPassword\": \"NewPassword123\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/auth/reset-password",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "auth",
+                    "reset-password"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [],
+              "cookie": [],
+              "body": "{\n    \"status\": \"error\",\n    \"message\": \"Invalid or expired OTP\",\n    \"code\": 401\n}"
+            }
+          ]
+        },
+        {
+          "name": "Logout",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWY1ZTZmYzUyYjM5YjRhZDRlNjU0YzQiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NzcyNDA2MywiZXhwIjoxNzc3NzI3NjYzfQ.dmx7Hqn1euKO1pQ1YJdpCf9xPcFIc9Mv8Z0sJm7m048",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"email\": \"eslamelkhabery60@gmail.com\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/auth/logout",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "auth",
+                "logout"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Logout",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"email\": \"eslamelkhabery60@gmail.com\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/auth/logout",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "auth",
+                    "logout"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "112"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"70-OsprFQ7cQpk4kwV7IOvqIjo7hFM\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 02 May 2026 12:10:59 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [
+                {
+                  "expires": "Invalid Date",
+                  "domain": "",
+                  "path": ""
+                }
+              ],
+              "body": "{\n    \"status\": \"success\",\n    \"message\": \"Logged out successfully\",\n    \"code\": 200,\n    \"data\": {\n        \"message\": \"Logged out successfully\"\n    }\n}"
+            },
+            {
+              "name": "fail",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"email\": \"eslamelkhabery60@gmail.com\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/auth/logout",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "auth",
+                    "logout"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "78"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"4e-WWZyk7zKGyQwcCc0gisVKsHl554\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 02 May 2026 12:08:15 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"error\",\n    \"message\": \"You can only logout your own account\",\n    \"code\": 401\n}"
+            },
+            {
+              "name": "fail (credintials changed)",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"email\": \"eslamelkhabery60@gmail.com\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/auth/logout",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "auth",
+                    "logout"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "81"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"51-MfeuYmuiJZ8Y/GlTEGADCMesfuw\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 02 May 2026 12:11:55 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"error\",\n    \"message\": \"Credentials changed, please login again\",\n    \"code\": 401\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "User",
+      "item": [
+        {
+          "name": "getProfile",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWZmNDVjYTNlMzZiZjYzZWNlNWRhODAiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3ODAyMzExODMsImV4cCI6MTc4MDIzNDc4M30.RFSZ4WjyGz6GIYr3KYEVy-nkyD-5NAmPqy_sLqjSFBw",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/user/profile",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "user",
+                "profile"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "success",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/user/profile",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "user",
+                    "profile"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "323"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"143-XH+YPgYr8jpEvZZm8P3O+8dZW38\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 02 May 2026 12:14:33 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"success\",\n    \"message\": \"User profile retrieved successfully\",\n    \"code\": 200,\n    \"data\": {\n        \"message\": \"User profile retrieved successfully\",\n        \"user\": {\n            \"id\": \"69f5e6fc52b39b4ad4e654c4\",\n            \"username\": \"eslam_user\",\n            \"email\": \"eslamelkhabery60@gmail.com\",\n            \"phone\": \"01234567890\",\n            \"age\": 25,\n            \"gender\": \"male\",\n            \"role\": \"user\",\n            \"isEmailConfirmed\": true\n        }\n    }\n}"
+            },
+            {
+              "name": "fail",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/user/profile",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "user",
+                    "profile"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "81"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"51-MfeuYmuiJZ8Y/GlTEGADCMesfuw\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 02 May 2026 12:14:54 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"error\",\n    \"message\": \"Credentials changed, please login again\",\n    \"code\": 401\n}"
+            },
+            {
+              "name": "fail - invalid token",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/user/profile",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "user",
+                    "profile"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "62"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"3e-GBvHs8cKtna1CbzcGF4icRBjn+k\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 02 May 2026 12:15:18 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"error\",\n    \"message\": \"Invalid access token\",\n    \"code\": 401\n}"
+            }
+          ]
+        },
+        {
+          "name": "download profile or cover photo",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWZmNDVmYTNlMzZiZjYzZWNlNWRhODEiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3ODMzOTczOSwiZXhwIjoxNzc4MzQzMzM5fQ.mKjQC_xntTZGFXaNLJ8WPj_qViMrX9mguFBPBQU2rQI",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"email\": \"eslamelkhabery60@gmail.com\",\r\n    \"password\": \"Password123\"\r\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/user/download/profile",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "user",
+                "download",
+                "profile"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "fail",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"email\": \"eslamelkhabery60@gmail.com\",\r\n    \"password\": \"Password123\"\r\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/user/download/profile",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "user",
+                    "download",
+                    "profile"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "67"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"43-e93wDIRtYXCdD337eLtipXPYKsE\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 09 May 2026 15:15:25 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"error\",\n    \"message\": \"profile picture not found\",\n    \"code\": 404\n}"
+            }
+          ]
+        },
+        {
+          "name": "Upload profile picture",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWZmNDVmYTNlMzZiZjYzZWNlNWRhODEiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3ODMzNzM2NiwiZXhwIjoxNzc4MzQwOTY2fQ.gQN8l-UpzSaF0SUKj1KMu611YAVb032cVobMnowYfZI",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "",
+                  "type": "file",
+                  "uuid": "e16b0676-3754-484b-8312-c67f1dc06f40",
+                  "src": "/C:/Users/eslam/OneDrive/سطح المكتب/657155316_960180583194929_7555047063752280630_n.jpg"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/user/profile-pic",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "user",
+                "profile-pic"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "success",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "profilePic",
+                      "type": "file",
+                      "uuid": "e16b0676-3754-484b-8312-c67f1dc06f40",
+                      "src": "postman-cloud:///1f14bb55-e984-4fc0-b69b-12b78c469534"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/user/profile-pic",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "user",
+                    "profile-pic"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "142"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"8e-5hUFnZOlXxgJPduZwFK/CH4tVBE\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 09 May 2026 14:44:03 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"success\",\n    \"message\": \"Profile picture uploaded to Cloudinary\",\n    \"code\": 200,\n    \"data\": {\n        \"message\": \"Profile picture uploaded to Cloudinary\"\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "upload cover pics",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWZmNDVmYTNlMzZiZjYzZWNlNWRhODEiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3ODMzNzM2NiwiZXhwIjoxNzc4MzQwOTY2fQ.gQN8l-UpzSaF0SUKj1KMu611YAVb032cVobMnowYfZI",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "coverPics",
+                  "type": "file",
+                  "uuid": "e16b0676-3754-484b-8312-c67f1dc06f40",
+                  "src": "postman-cloud:///1f14bb61-4286-4a00-a921-52ad0ff98754"
+                },
+                {
+                  "key": "coverPics",
+                  "type": "file",
+                  "uuid": "29fb87be-a1ed-4211-92ec-df7eabe5702b",
+                  "src": "/C:/Eslam/wallpapers and icons/turbo-granny-1920x1080-19423.jpg"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/user/cover-pics",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "user",
+                "cover-pics"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "success",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "coverPics",
+                      "type": "file",
+                      "uuid": "e16b0676-3754-484b-8312-c67f1dc06f40",
+                      "src": "postman-cloud:///1f14bb61-4286-4a00-a921-52ad0ff98754"
+                    },
+                    {
+                      "key": "coverPics",
+                      "type": "file",
+                      "uuid": "29fb87be-a1ed-4211-92ec-df7eabe5702b",
+                      "src": "/C:/Eslam/wallpapers and icons/turbo-granny-1920x1080-19423.jpg"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/user/cover-pics",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "user",
+                    "cover-pics"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "196"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"c4-Xbe/jZ3zVQIDyVdB/8/Im3VzT2o\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 09 May 2026 14:48:12 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"success\",\n    \"message\": \"Cover pictures updated successfully (mixed storage based on size)\",\n    \"code\": 200,\n    \"data\": {\n        \"message\": \"Cover pictures updated successfully (mixed storage based on size)\"\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "restore user",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWZmNDVjYTNlMzZiZjYzZWNlNWRhODAiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NzgzMzg4NDYsImV4cCI6MTc3ODM0MjQ0Nn0.JtCDS0Vv9G8fUThFi3wPBbqU-l_mf1h1jJubHnqPl78",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PATCH",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/user/restore/69ff45fa3e36bf63ece5da81",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "user",
+                "restore",
+                "69ff45fa3e36bf63ece5da81"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "success",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/user/restore/69ff45fa3e36bf63ece5da81",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "user",
+                    "restore",
+                    "69ff45fa3e36bf63ece5da81"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "118"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"76-2TBHjQ2MCXVCYa9fASXO2zHJGK0\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 09 May 2026 15:00:59 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"success\",\n    \"message\": \"User restored successfully\",\n    \"code\": 200,\n    \"data\": {\n        \"message\": \"User restored successfully\"\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "soft delete user",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWZmNDVjYTNlMzZiZjYzZWNlNWRhODAiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NzgzMzg4NDYsImV4cCI6MTc3ODM0MjQ0Nn0.JtCDS0Vv9G8fUThFi3wPBbqU-l_mf1h1jJubHnqPl78",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "coverPics",
+                  "type": "file",
+                  "uuid": "e16b0676-3754-484b-8312-c67f1dc06f40",
+                  "src": "postman-cloud:///1f14bb61-4286-4a00-a921-52ad0ff98754"
+                },
+                {
+                  "key": "coverPics",
+                  "type": "file",
+                  "uuid": "29fb87be-a1ed-4211-92ec-df7eabe5702b",
+                  "src": "/C:/Eslam/wallpapers and icons/turbo-granny-1920x1080-19423.jpg"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/user/soft/69ff45fa3e36bf63ece5da81",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "user",
+                "soft",
+                "69ff45fa3e36bf63ece5da81"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "success",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "coverPics",
+                      "type": "file",
+                      "uuid": "e16b0676-3754-484b-8312-c67f1dc06f40",
+                      "src": "postman-cloud:///1f14bb61-4286-4a00-a921-52ad0ff98754"
+                    },
+                    {
+                      "key": "coverPics",
+                      "type": "file",
+                      "uuid": "29fb87be-a1ed-4211-92ec-df7eabe5702b",
+                      "src": "/C:/Eslam/wallpapers and icons/turbo-granny-1920x1080-19423.jpg"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/user/soft/69ff45fa3e36bf63ece5da81",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "user",
+                    "soft",
+                    "69ff45fa3e36bf63ece5da81"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "126"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"7e-QUF1x0O4fFktY5lho4tBdAI/EoE\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 09 May 2026 14:52:24 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"success\",\n    \"message\": \"User soft-deleted successfully\",\n    \"code\": 200,\n    \"data\": {\n        \"message\": \"User soft-deleted successfully\"\n    }\n}"
+            },
+            {
+              "name": "fail",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "coverPics",
+                      "type": "file",
+                      "uuid": "e16b0676-3754-484b-8312-c67f1dc06f40",
+                      "src": "postman-cloud:///1f14bb61-4286-4a00-a921-52ad0ff98754"
+                    },
+                    {
+                      "key": "coverPics",
+                      "type": "file",
+                      "uuid": "29fb87be-a1ed-4211-92ec-df7eabe5702b",
+                      "src": "/C:/Eslam/wallpapers and icons/turbo-granny-1920x1080-19423.jpg"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/user/soft/69ff45fa3e36bf63ece5da81",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "user",
+                    "soft",
+                    "69ff45fa3e36bf63ece5da81"
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "91"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"5b-4K5kMCA8XoI6RUtYoEXI2wS1yiA\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 09 May 2026 14:51:36 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"error\",\n    \"message\": \"You do not have permission to perform this action\",\n    \"code\": 403\n}"
+            }
+          ]
+        },
+        {
+          "name": "hard dedlete user",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWZmNDVjYTNlMzZiZjYzZWNlNWRhODAiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NzgzMzg4NDYsImV4cCI6MTc3ODM0MjQ0Nn0.JtCDS0Vv9G8fUThFi3wPBbqU-l_mf1h1jJubHnqPl78",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "coverPics",
+                  "type": "file",
+                  "uuid": "e16b0676-3754-484b-8312-c67f1dc06f40",
+                  "src": "postman-cloud:///1f14bb61-4286-4a00-a921-52ad0ff98754"
+                },
+                {
+                  "key": "coverPics",
+                  "type": "file",
+                  "uuid": "29fb87be-a1ed-4211-92ec-df7eabe5702b",
+                  "src": "/C:/Eslam/wallpapers and icons/turbo-granny-1920x1080-19423.jpg"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/user/hard/{{userID}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "user",
+                "hard",
+                "{{userID}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "delete cove or profile image",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWZmNDVmYTNlMzZiZjYzZWNlNWRhODEiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3ODMzOTczOSwiZXhwIjoxNzc4MzQzMzM5fQ.mKjQC_xntTZGFXaNLJ8WPj_qViMrX9mguFBPBQU2rQI",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"email\": \"eslamelkhabery60@gmail.com\",\r\n    \"password\": \"Password123\"\r\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/user/image/cover",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "user",
+                "image",
+                "cover"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "success",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"email\": \"eslamelkhabery60@gmail.com\",\r\n    \"password\": \"Password123\"\r\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/user/image/cover",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "user",
+                    "image",
+                    "cover"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "134"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"86-CoO8mmv4HB+7C5cePghaDkl9lUU\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 09 May 2026 15:18:46 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"success\",\n    \"message\": \"cover picture deleted successfully\",\n    \"code\": 200,\n    \"data\": {\n        \"message\": \"cover picture deleted successfully\"\n    }\n}"
+            },
+            {
+              "name": "fail",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"email\": \"eslamelkhabery60@gmail.com\",\r\n    \"password\": \"Password123\"\r\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/user/image/cover",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "user",
+                    "image",
+                    "cover"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "65"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"41-dLYfHFlhaYILyLFitYUf8ztID8w\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 09 May 2026 15:19:01 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"error\",\n    \"message\": \"cover picture not found\",\n    \"code\": 404\n}"
+            }
+          ]
+        },
+        {
+          "name": "search for friends",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTJkNGUxZTRjYzljMGUyMzYzYjQ1ODUiLCJyb2xlIjoidXNlciIsImlhdCI6MTc4MTM1NDEzNywiZXhwIjoxNzgxMzU3NzM3fQ.B-Zpzf2xuy0wdvdcqh2WOc3fSAI4aWb8b_finJDuZuI",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/user/search?q=omar",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "user",
+                "search"
+              ],
+              "query": [
+                {
+                  "key": "q",
+                  "value": "omar"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "success",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/user/search?q=omar",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "user",
+                    "search"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "omar"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "http://localhost:5173"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Access-Control-Allow-Credentials",
+                  "value": "true"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "527"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"20f-JroFTWYVytiGaCdJtR50j7n+DpA\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 13 Jun 2026 12:54:20 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"success\",\n    \"message\": \"Users searched successfully\",\n    \"code\": 200,\n    \"data\": {\n        \"message\": \"Users searched successfully\",\n        \"data\": [\n            {\n                \"id\": \"69ff45ca3e36bf63ece5da80\",\n                \"username\": \"eslam_user\",\n                \"email\": \"eslamelkhabery60@gmail.com\",\n                \"profilePic\": \"\",\n                \"isFriend\": false\n            },\n            {\n                \"id\": \"69ff45fa3e36bf63ece5da81\",\n                \"username\": \"eslam_user\",\n                \"email\": \"eslam.omar.elkhabery@gmail.com\",\n                \"profilePic\": \"https://res.cloudinary.com/dqaq6ju4d/image/upload/v1778337841/social-media/users/69ff45fa3e36bf63ece5da81/profile/ylszusmntdrqzyzxq48z.jpg\",\n                \"isFriend\": false\n            }\n        ]\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Add new friend",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTJkNGUxZTRjYzljMGUyMzYzYjQ1ODUiLCJyb2xlIjoidXNlciIsImlhdCI6MTc4MTM1NDEzNywiZXhwIjoxNzgxMzU3NzM3fQ.B-Zpzf2xuy0wdvdcqh2WOc3fSAI4aWb8b_finJDuZuI",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"friendId\": \"69ff45ca3e36bf63ece5da80\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/user/add-friend",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "user",
+                "add-friend"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "success",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"friendId\": \"69ff45ca3e36bf63ece5da80\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/user/add-friend",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "user",
+                    "add-friend"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "http://localhost:5173"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Access-Control-Allow-Credentials",
+                  "value": "true"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "116"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"74-dd3HwRGMetSK37e+sJ9n+4vAF4A\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 13 Jun 2026 12:57:58 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"success\",\n    \"message\": \"Friend added successfully\",\n    \"code\": 200,\n    \"data\": {\n        \"message\": \"Friend added successfully\"\n    }\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Notification",
+      "item": [
+        {
+          "name": "update FCM token",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTJkNGUxZTRjYzljMGUyMzYzYjQ1ODUiLCJyb2xlIjoidXNlciIsImlhdCI6MTc4MTM1NDA0NiwiZXhwIjoxNzgxMzU3NjQ2fQ.G2w-eDPP0zMrx2Rkkwmwvdr5ElNXmLvkFBJmfjTN1d8",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"fcmToken\": \"e60nJaCVx2Dq8TbF0Xccvh:APA91bHVhPpTPrCqjUH9DFweT2iJk6yaJ7ruShfI69hIfzsTMRrZg9fk_jKoUclTPtrXsvzBbVUvPrJXmy-Mu_2LqbBXEz445qpU_FTCS0Z9dqycVGKdPpw\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/notification/token",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "notification",
+                "token"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Send Notification",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"token\": \"e60nJaCVx2Dq8TbF0Xccvh:APA91bHVhPpTPrCqjUH9DFweT2iJk6yaJ7ruShfI69hIfzsTMRrZg9fk_jKoUclTPtrXsvzBbVUvPrJXmy-Mu_2LqbBXEz445qpU_FTCS0Z9dqycVGKdPpw\",\r\n  \"title\": \"Eslam Omar!\",\r\n  \"body\": \"This is a test notification\",\r\n  \"data\": {\r\n    \"click_action\": \"Web-notification\"\r\n  }\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/notification/send-notification",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "notification",
+                "send-notification"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "success",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"token\": \"e60nJaCVx2Dq8TbF0Xccvh:APA91bHVhPpTPrCqjUH9DFweT2iJk6yaJ7ruShfI69hIfzsTMRrZg9fk_jKoUclTPtrXsvzBbVUvPrJXmy-Mu_2LqbBXEz445qpU_FTCS0Z9dqycVGKdPpw\",\r\n  \"title\": \"Hello!\",\r\n  \"body\": \"This is a test notification\",\r\n  \"data\": {\r\n    \"click_action\": \"Web-notification\"\r\n  }\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/notification/send-notification",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "notification",
+                    "send-notification"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "161"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"a1-KRHAAvgcCLY+s8E2dghHavVj2S8\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 16 May 2026 12:22:57 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"success\",\n    \"message\": \"Notification sent successfully\",\n    \"code\": 200,\n    \"data\": \"projects/social-media-app-41d4a/messages/d5ff6c1f-b07f-411c-8b7e-4992c577e030\"\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Post",
+      "item": [
+        {
+          "name": "get post",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWZmNDVmYTNlMzZiZjYzZWNlNWRhODEiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3ODkzOTAzNCwiZXhwIjoxNzc4OTQyNjM0fQ.OxrcH7DXQcyo0k3hL6LStZR84_jsMZF9Luez0DRX6-E",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/post/6a08766d1987ef2850da2b4b",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "post",
+                "6a08766d1987ef2850da2b4b"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "success",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/post/6a08766d1987ef2850da2b4b",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "post",
+                    "6a08766d1987ef2850da2b4b"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "480"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"1e0-pTJE5u9eeQHWBEpCDUtp+dBdYVk\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 16 May 2026 14:26:21 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"success\",\n    \"message\": \"Post retrieved successfully\",\n    \"code\": 200,\n    \"data\": {\n        \"_id\": \"6a08766d1987ef2850da2b4b\",\n        \"userId\": \"69ff45fa3e36bf63ece5da81\",\n        \"content\": \"my first post\",\n        \"attachments\": [\n            \"https://res.cloudinary.com/dqaq6ju4d/image/upload/v1778939499/social-media/posts/69ff45fa3e36bf63ece5da81/attachments/wpvkxuxz6ktg6r9mgdlp.jpg\"\n        ],\n        \"likes\": [\n            \"69ff45fa3e36bf63ece5da81\"\n        ],\n        \"tags\": [],\n        \"privacy\": \"public\",\n        \"createdAt\": \"2026-05-16T13:51:41.147Z\",\n        \"updatedAt\": \"2026-05-16T13:54:41.496Z\"\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "create post",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTJkNGUxZTRjYzljMGUyMzYzYjQ1ODUiLCJyb2xlIjoidXNlciIsImlhdCI6MTc4MTM1NDEzNywiZXhwIjoxNzgxMzU3NzM3fQ.B-Zpzf2xuy0wdvdcqh2WOc3fSAI4aWb8b_finJDuZuI",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "content",
+                  "value": "Hello Toty",
+                  "type": "text",
+                  "uuid": "80f1d652-8be4-46db-9252-0c1005efd710"
+                },
+                {
+                  "key": "privacy",
+                  "value": "public",
+                  "type": "text",
+                  "uuid": "c25b4e54-47b8-4808-803a-bf221ce6b819"
+                },
+                {
+                  "key": "attachments",
+                  "type": "file",
+                  "uuid": "140fb354-1bb3-453f-a3c1-16c5bcfca616",
+                  "src": "/C:/Eslam/wallpapers and icons/turbo-granny-1920x1080-19423.jpg"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/post",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "post"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "success",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "content",
+                      "value": "my first post",
+                      "type": "text",
+                      "uuid": "80f1d652-8be4-46db-9252-0c1005efd710"
+                    },
+                    {
+                      "key": "privacy",
+                      "value": "public",
+                      "type": "text",
+                      "uuid": "c25b4e54-47b8-4808-803a-bf221ce6b819"
+                    },
+                    {
+                      "key": "attachments",
+                      "type": "file",
+                      "uuid": "140fb354-1bb3-453f-a3c1-16c5bcfca616",
+                      "src": "/C:/Eslam/wallpapers and icons/turbo-granny-1920x1080-19423.jpg"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/post",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "post"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "452"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"1c4-VHorh88kca1y9UIGtAQWr/QXL08\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 16 May 2026 13:52:23 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"success\",\n    \"message\": \"Post created successfully\",\n    \"code\": 201,\n    \"data\": {\n        \"userId\": \"69ff45fa3e36bf63ece5da81\",\n        \"content\": \"my first post\",\n        \"attachments\": [\n            \"https://res.cloudinary.com/dqaq6ju4d/image/upload/v1778939542/social-media/posts/69ff45fa3e36bf63ece5da81/attachments/tfi164540usgy5ntgrbb.jpg\"\n        ],\n        \"likes\": [],\n        \"tags\": [],\n        \"privacy\": \"public\",\n        \"_id\": \"6a0876973c6f5f462333db1e\",\n        \"createdAt\": \"2026-05-16T13:52:23.368Z\",\n        \"updatedAt\": \"2026-05-16T13:52:23.368Z\"\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "like post",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWZmNDVmYTNlMzZiZjYzZWNlNWRhODEiLCJyb2xlIjoidXNlciIsImlhdCI6MTc3ODkzOTAzNCwiZXhwIjoxNzc4OTQyNjM0fQ.OxrcH7DXQcyo0k3hL6LStZR84_jsMZF9Luez0DRX6-E",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PATCH",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/post/6a08766d1987ef2850da2b4b/like",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "post",
+                "6a08766d1987ef2850da2b4b",
+                "like"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "success",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/post/6a08766d1987ef2850da2b4b/like",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "post",
+                    "6a08766d1987ef2850da2b4b",
+                    "like"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "477"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"1dd-sHNZM3zXUvdGf8MNBpWQOYzRpq0\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 16 May 2026 13:54:41 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"success\",\n    \"message\": \"Post like status updated\",\n    \"code\": 200,\n    \"data\": {\n        \"_id\": \"6a08766d1987ef2850da2b4b\",\n        \"userId\": \"69ff45fa3e36bf63ece5da81\",\n        \"content\": \"my first post\",\n        \"attachments\": [\n            \"https://res.cloudinary.com/dqaq6ju4d/image/upload/v1778939499/social-media/posts/69ff45fa3e36bf63ece5da81/attachments/wpvkxuxz6ktg6r9mgdlp.jpg\"\n        ],\n        \"likes\": [\n            \"69ff45fa3e36bf63ece5da81\"\n        ],\n        \"tags\": [],\n        \"privacy\": \"public\",\n        \"createdAt\": \"2026-05-16T13:51:41.147Z\",\n        \"updatedAt\": \"2026-05-16T13:54:41.496Z\"\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "update post",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWZmNDVjYTNlMzZiZjYzZWNlNWRhODAiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3Nzg5NDMxODcsImV4cCI6MTc3ODk0Njc4N30.SQ8O-TLd1thWvpY_rcDE18Q8Ysa9OgyulLvmnDACjiE",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \r\n  \"content\": \"Updated content\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/post/6a08766d1987ef2850da2b4b",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "post",
+                "6a08766d1987ef2850da2b4b"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "success",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \r\n  \"content\": \"Updated content\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/post/6a08766d1987ef2850da2b4b",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "post",
+                    "6a08766d1987ef2850da2b4b"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "454"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"1c6-LZzK0uY8ZGxsVJ6RTlzz2AR944A\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 16 May 2026 14:33:04 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"success\",\n    \"message\": \"Post updated successfully\",\n    \"code\": 200,\n    \"data\": {\n        \"_id\": \"6a08766d1987ef2850da2b4b\",\n        \"userId\": \"69ff45fa3e36bf63ece5da81\",\n        \"content\": \"Updated content\",\n        \"attachments\": [\n            \"https://res.cloudinary.com/dqaq6ju4d/image/upload/v1778939499/social-media/posts/69ff45fa3e36bf63ece5da81/attachments/wpvkxuxz6ktg6r9mgdlp.jpg\"\n        ],\n        \"likes\": [],\n        \"tags\": [],\n        \"privacy\": \"public\",\n        \"createdAt\": \"2026-05-16T13:51:41.147Z\",\n        \"updatedAt\": \"2026-05-16T14:33:04.158Z\"\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "delete post",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWZmNDVjYTNlMzZiZjYzZWNlNWRhODAiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3Nzg5NDMxODcsImV4cCI6MTc3ODk0Njc4N30.SQ8O-TLd1thWvpY_rcDE18Q8Ysa9OgyulLvmnDACjiE",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/post/6a0876973c6f5f462333db1e",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "post",
+                "6a0876973c6f5f462333db1e"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "success",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/post/6a0876903c6f5f462333db1d",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "post",
+                    "6a0876903c6f5f462333db1d"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "491"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"1eb-UjvSOUfSXnCVpof3kCL+BLo4ca4\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 16 May 2026 14:34:32 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"success\",\n    \"message\": \"Post deleted successfully\",\n    \"code\": 200,\n    \"data\": {\n        \"_id\": \"6a0876903c6f5f462333db1d\",\n        \"userId\": \"69ff45fa3e36bf63ece5da81\",\n        \"content\": \"my first post\",\n        \"attachments\": [\n            \"https://res.cloudinary.com/dqaq6ju4d/image/upload/v1778939535/social-media/posts/69ff45fa3e36bf63ece5da81/attachments/ashut3rvsolrresgtjgq.jpg\"\n        ],\n        \"likes\": [],\n        \"tags\": [],\n        \"privacy\": \"public\",\n        \"createdAt\": \"2026-05-16T13:52:16.599Z\",\n        \"updatedAt\": \"2026-05-16T14:34:32.498Z\",\n        \"deletedAt\": \"2026-05-16T14:34:32.498Z\"\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "get all posts with pagination",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWZmNDVjYTNlMzZiZjYzZWNlNWRhODAiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3Nzg5NDMxODcsImV4cCI6MTc3ODk0Njc4N30.SQ8O-TLd1thWvpY_rcDE18Q8Ysa9OgyulLvmnDACjiE",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/post?page=1&limit=4",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "post"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "4"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Comment",
+      "item": [
+        {
+          "name": "Add comment",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWZmNDVjYTNlMzZiZjYzZWNlNWRhODAiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3Nzg5NDc0OTUsImV4cCI6MTc3ODk1MTA5NX0._JILdqrK-CN4kguqDFKfZfDiXRQQ6XgYunIDWu25aXE",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "content",
+                  "value": "\"Fisrt comment\"",
+                  "type": "text",
+                  "uuid": "83cdbc63-71f0-448f-aa8d-32c71ac564e1"
+                },
+                {
+                  "key": "postId",
+                  "value": "6a08766d1987ef2850da2b4b",
+                  "type": "text",
+                  "uuid": "043ae569-e557-4ce7-a64f-587ff33249da"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/comment",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "comment"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "success",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "content",
+                      "value": "\"Fisrt comment\"",
+                      "type": "text",
+                      "uuid": "83cdbc63-71f0-448f-aa8d-32c71ac564e1"
+                    },
+                    {
+                      "key": "postId",
+                      "value": "6a08766d1987ef2850da2b4b",
+                      "type": "text",
+                      "uuid": "043ae569-e557-4ce7-a64f-587ff33249da"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/comment",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "comment"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "333"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"14d-sHj0C7gjV28eh82LWOnr5DVnNFE\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 16 May 2026 16:05:04 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"success\",\n    \"message\": \"Comment added successfully\",\n    \"code\": 201,\n    \"data\": {\n        \"content\": \"\\\"Fisrt comment\\\"\",\n        \"attachments\": [],\n        \"likes\": [],\n        \"tags\": [],\n        \"postId\": \"6a08766d1987ef2850da2b4b\",\n        \"createdBy\": \"69ff45ca3e36bf63ece5da80\",\n        \"_id\": \"6a0895b0c335fd6ee7986a8b\",\n        \"createdAt\": \"2026-05-16T16:05:04.169Z\",\n        \"updatedAt\": \"2026-05-16T16:05:04.169Z\"\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "get comments of a post",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWZmNDVjYTNlMzZiZjYzZWNlNWRhODAiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3Nzg5NDc0OTUsImV4cCI6MTc3ODk1MTA5NX0._JILdqrK-CN4kguqDFKfZfDiXRQQ6XgYunIDWu25aXE",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/comment/post/6a08766d1987ef2850da2b4b?page=1&limit=10",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "comment",
+                "post",
+                "6a08766d1987ef2850da2b4b"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "10"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "success",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/comment/post/6a08766d1987ef2850da2b4b?page=1&limit=10",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "comment",
+                    "post",
+                    "6a08766d1987ef2850da2b4b"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "413"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"19d-J+VQVJa6dooPSuxyx+rndZ0FWcY\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 16 May 2026 16:10:32 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"success\",\n    \"message\": \"Comments retrieved successfully\",\n    \"code\": 200,\n    \"data\": {\n        \"comments\": [\n            {\n                \"_id\": \"6a0895b0c335fd6ee7986a8b\",\n                \"content\": \"\\\"Fisrt comment\\\"\",\n                \"attachments\": [],\n                \"likes\": [],\n                \"tags\": [],\n                \"postId\": \"6a08766d1987ef2850da2b4b\",\n                \"createdBy\": \"69ff45ca3e36bf63ece5da80\",\n                \"createdAt\": \"2026-05-16T16:05:04.169Z\",\n                \"updatedAt\": \"2026-05-16T16:05:04.169Z\"\n            }\n        ],\n        \"pagination\": {\n            \"total\": 1,\n            \"page\": 1,\n            \"limit\": 10,\n            \"totalPages\": 1\n        }\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "update comment",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWZmNDVjYTNlMzZiZjYzZWNlNWRhODAiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3Nzg5NDc0OTUsImV4cCI6MTc3ODk1MTA5NX0._JILdqrK-CN4kguqDFKfZfDiXRQQ6XgYunIDWu25aXE",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"content\": \"Updated comment\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/comment/6a0895b0c335fd6ee7986a8b",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "comment",
+                "6a0895b0c335fd6ee7986a8b"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "succeess",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"content\": \"Updated comment\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/comment/6a0895b0c335fd6ee7986a8b",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "comment",
+                    "6a0895b0c335fd6ee7986a8b"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "333"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"14d-fMiM7BlhnZe/tVCgziZ7RsPQTi8\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 16 May 2026 16:12:59 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"success\",\n    \"message\": \"Comment updated successfully\",\n    \"code\": 200,\n    \"data\": {\n        \"_id\": \"6a0895b0c335fd6ee7986a8b\",\n        \"content\": \"Updated comment\",\n        \"attachments\": [],\n        \"likes\": [],\n        \"tags\": [],\n        \"postId\": \"6a08766d1987ef2850da2b4b\",\n        \"createdBy\": \"69ff45ca3e36bf63ece5da80\",\n        \"createdAt\": \"2026-05-16T16:05:04.169Z\",\n        \"updatedAt\": \"2026-05-16T16:12:59.622Z\"\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "like/unlike comment",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWZmNDVjYTNlMzZiZjYzZWNlNWRhODAiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3Nzg5NDc0OTUsImV4cCI6MTc3ODk1MTA5NX0._JILdqrK-CN4kguqDFKfZfDiXRQQ6XgYunIDWu25aXE",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"content\": \"Updated comment\"\r\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/comment/6a0895b0c335fd6ee7986a8b/like",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "comment",
+                "6a0895b0c335fd6ee7986a8b",
+                "like"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "success",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"content\": \"Updated comment\"\r\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/comment/6a0895b0c335fd6ee7986a8b/like",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "comment",
+                    "6a0895b0c335fd6ee7986a8b",
+                    "like"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "358"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"166-3RBckymDs9kYq4fLZBrIF8RQk3A\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 16 May 2026 16:15:42 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"success\",\n    \"message\": \"Comment like status updated\",\n    \"code\": 200,\n    \"data\": {\n        \"_id\": \"6a0895b0c335fd6ee7986a8b\",\n        \"content\": \"Updated comment\",\n        \"attachments\": [],\n        \"likes\": [\n            \"69ff45ca3e36bf63ece5da80\"\n        ],\n        \"tags\": [],\n        \"postId\": \"6a08766d1987ef2850da2b4b\",\n        \"createdBy\": \"69ff45ca3e36bf63ece5da80\",\n        \"createdAt\": \"2026-05-16T16:05:04.169Z\",\n        \"updatedAt\": \"2026-05-16T16:15:42.936Z\"\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "reply comments",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWZmNDVjYTNlMzZiZjYzZWNlNWRhODAiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3Nzg5NTIwMzIsImV4cCI6MTc3ODk1NTYzMn0.n65EVsZJtP3xV6IhBvOzIoFSOrl8OYG0SqiSX65rVTU",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "content",
+                  "type": "text",
+                  "uuid": "ac86c80c-5cad-440f-9cfc-3c4d624ffd62",
+                  "value": "good comment"
+                },
+                {
+                  "key": "tags[0]",
+                  "value": "69ff45ca3e36bf63ece5da80",
+                  "type": "text",
+                  "uuid": "9ba067d3-143c-4c0c-8a93-66330ca4a358"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/comment/6a0895b0c335fd6ee7986a8b",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "comment",
+                "6a0895b0c335fd6ee7986a8b"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get replies",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWZmNDVjYTNlMzZiZjYzZWNlNWRhODAiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3Nzg5NTIwMzIsImV4cCI6MTc3ODk1NTYzMn0.n65EVsZJtP3xV6IhBvOzIoFSOrl8OYG0SqiSX65rVTU",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "graphql",
+              "graphql": {
+                "query": "query {\r\n  getCommentReplies(commentId: \"6a0895b0c335fd6ee7986a8b\") {\r\n    id\r\n    content\r\n    replies {\r\n      id\r\n      content\r\n    }\r\n  }\r\n}\r\n",
+                "variables": ""
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/graphql",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "graphql"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "success",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "graphql",
+                  "graphql": {
+                    "query": "query {\r\n  getCommentReplies(commentId: \"6a0895b0c335fd6ee7986a8b\") {\r\n    id\r\n    content\r\n    replies {\r\n      id\r\n      content\r\n    }\r\n  }\r\n}\r\n",
+                    "variables": ""
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/graphql",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "graphql"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "cache-control",
+                  "value": "no-store"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "105"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"69-Qucor1NcgPfOv57PDOKiexY3lhg\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 16 May 2026 17:29:11 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"data\": {\n        \"getCommentReplies\": [\n            {\n                \"id\": \"6a08a7804587705a038fdd05\",\n                \"content\": \"good comment\",\n                \"replies\": []\n            }\n        ]\n    }\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "story",
+      "item": [
+        {
+          "name": "create story",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWZmNDVjYTNlMzZiZjYzZWNlNWRhODAiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3Nzg5NDc0OTUsImV4cCI6MTc3ODk1MTA5NX0._JILdqrK-CN4kguqDFKfZfDiXRQQ6XgYunIDWu25aXE",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "media",
+                  "type": "file",
+                  "uuid": "ac86c80c-5cad-440f-9cfc-3c4d624ffd62",
+                  "src": "/C:/Eslam/wallpapers and icons/turbo-granny-1920x1080-19423.jpg"
+                },
+                {
+                  "key": "content",
+                  "value": "My first story",
+                  "type": "text",
+                  "uuid": "9ba067d3-143c-4c0c-8a93-66330ca4a358"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/story",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "story"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "success",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "media",
+                      "type": "file",
+                      "uuid": "ac86c80c-5cad-440f-9cfc-3c4d624ffd62",
+                      "src": "/C:/Eslam/wallpapers and icons/turbo-granny-1920x1080-19423.jpg"
+                    },
+                    {
+                      "key": "content",
+                      "value": "My first story",
+                      "type": "text",
+                      "uuid": "9ba067d3-143c-4c0c-8a93-66330ca4a358"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/story",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "story"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "370"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"172-vX3AXq+AHkBBTRnBDdaBpY1M3cE\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 16 May 2026 16:35:41 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"success\",\n    \"message\": \"Story created successfully\",\n    \"code\": 201,\n    \"data\": {\n        \"userId\": \"69ff45ca3e36bf63ece5da80\",\n        \"content\": \"My first story\",\n        \"media\": \"https://res.cloudinary.com/dqaq6ju4d/image/upload/v1778949340/social-media/stories/69ff45ca3e36bf63ece5da80/fgusja1lardbozukkxvy.jpg\",\n        \"viewers\": [],\n        \"_id\": \"6a089cddbe64a49e0647e325\",\n        \"createdAt\": \"2026-05-16T16:35:41.989Z\"\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "gett all active stories",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWZmNDVjYTNlMzZiZjYzZWNlNWRhODAiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3Nzg5NDc0OTUsImV4cCI6MTc3ODk1MTA5NX0._JILdqrK-CN4kguqDFKfZfDiXRQQ6XgYunIDWu25aXE",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "media",
+                  "type": "file",
+                  "uuid": "ac86c80c-5cad-440f-9cfc-3c4d624ffd62",
+                  "src": "/C:/Eslam/wallpapers and icons/turbo-granny-1920x1080-19423.jpg"
+                },
+                {
+                  "key": "content",
+                  "value": "My first story",
+                  "type": "text",
+                  "uuid": "9ba067d3-143c-4c0c-8a93-66330ca4a358"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/story",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "story"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "success",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "media",
+                      "type": "file",
+                      "uuid": "ac86c80c-5cad-440f-9cfc-3c4d624ffd62",
+                      "src": "/C:/Eslam/wallpapers and icons/turbo-granny-1920x1080-19423.jpg"
+                    },
+                    {
+                      "key": "content",
+                      "value": "My first story",
+                      "type": "text",
+                      "uuid": "9ba067d3-143c-4c0c-8a93-66330ca4a358"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/story",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "story"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "383"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"17f-ahiTmVWCKYwxIhcGNQNJFa8tBBU\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 16 May 2026 16:38:02 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"success\",\n    \"message\": \"Active stories retrieved successfully\",\n    \"code\": 200,\n    \"data\": [\n        {\n            \"_id\": \"6a089cddbe64a49e0647e325\",\n            \"userId\": \"69ff45ca3e36bf63ece5da80\",\n            \"content\": \"My first story\",\n            \"media\": \"https://res.cloudinary.com/dqaq6ju4d/image/upload/v1778949340/social-media/stories/69ff45ca3e36bf63ece5da80/fgusja1lardbozukkxvy.jpg\",\n            \"viewers\": [],\n            \"createdAt\": \"2026-05-16T16:35:41.989Z\"\n        }\n    ]\n}"
+            }
+          ]
+        },
+        {
+          "name": "New Request",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWZmNDVjYTNlMzZiZjYzZWNlNWRhODAiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3Nzg5NDc0OTUsImV4cCI6MTc3ODk1MTA5NX0._JILdqrK-CN4kguqDFKfZfDiXRQQ6XgYunIDWu25aXE",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"content\": \"Updated comment\"\r\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/story/6a089cddbe64a49e0647e325/view",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "story",
+                "6a089cddbe64a49e0647e325",
+                "view"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "success",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"content\": \"Updated comment\"\r\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/story/6a089cddbe64a49e0647e325/view",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "story",
+                    "6a089cddbe64a49e0647e325",
+                    "view"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "392"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"188-1K+REroI2n1FQaZ3N91DhgKcsMo\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 16 May 2026 16:39:32 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"success\",\n    \"message\": \"Story marked as viewed\",\n    \"code\": 200,\n    \"data\": {\n        \"_id\": \"6a089cddbe64a49e0647e325\",\n        \"userId\": \"69ff45ca3e36bf63ece5da80\",\n        \"content\": \"My first story\",\n        \"media\": \"https://res.cloudinary.com/dqaq6ju4d/image/upload/v1778949340/social-media/stories/69ff45ca3e36bf63ece5da80/fgusja1lardbozukkxvy.jpg\",\n        \"viewers\": [\n            \"69ff45ca3e36bf63ece5da80\"\n        ],\n        \"createdAt\": \"2026-05-16T16:35:41.989Z\"\n    }\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Chat",
+      "item": [
+        {
+          "name": "Create Group Chat",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTJkNGUxZTRjYzljMGUyMzYzYjQ1ODUiLCJyb2xlIjoidXNlciIsImlhdCI6MTc4MTM1NTYxMCwiZXhwIjoxNzgxMzU5MjEwfQ.jaj--UOYYI0HRJbPPIyunttseef56c94WLT6qsL43U8",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"groupName\": \"Developers\",\r\n  \"emails\": [\"eslam.omar.elkhabery@gmail.com\", \"eslamelkhabery60@gmail.com\"]\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/chat/create-group-by-emails",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "chat",
+                "create-group-by-emails"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "success",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"groupName\": \"Developers\",\r\n  \"emails\": [\"eslam.omar.elkhabery@gmail.com\", \"eslamelkhabery60@gmail.com\"]\r\n}\r\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/chat/create-group-by-emails",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "chat",
+                    "create-group-by-emails"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "http://localhost:5173"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Access-Control-Allow-Credentials",
+                  "value": "true"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "543"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"21f-sebzD7Ulj85xoX3WhsLCg2NT+v4\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 13 Jun 2026 13:01:37 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"success\",\n    \"message\": \"Group chat created successfully\",\n    \"code\": 201,\n    \"data\": {\n        \"createdBy\": \"6a2d4e1e4cc9c0e2363b4585\",\n        \"participants\": [\n            \"69ff45fa3e36bf63ece5da81\",\n            \"69ff45ca3e36bf63ece5da80\",\n            \"6a2d4e1e4cc9c0e2363b4585\"\n        ],\n        \"chatType\": \"group\",\n        \"groupName\": \"Developers\",\n        \"groupImage\": \"https://res.cloudinary.com/dqaq6ju4d/image/upload/v1700000000/default-group-avatar.png\",\n        \"roomID\": \"d86e3088-1fb2-48ff-b36c-91fceff85afa\",\n        \"deletedAt\": null,\n        \"_id\": \"6a2d54b12c74439ab88b5a45\",\n        \"createdAt\": \"2026-06-13T13:01:37.954Z\",\n        \"updatedAt\": \"2026-06-13T13:01:37.954Z\"\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "get my groups",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTJkNGUxZTRjYzljMGUyMzYzYjQ1ODUiLCJyb2xlIjoidXNlciIsImlhdCI6MTc4MTM1NTYxMCwiZXhwIjoxNzgxMzU5MjEwfQ.jaj--UOYYI0HRJbPPIyunttseef56c94WLT6qsL43U8",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/chat/my-groups",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "chat",
+                "my-groups"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "success",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/chat/my-groups",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "chat",
+                    "my-groups"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "http://localhost:5173"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Access-Control-Allow-Credentials",
+                  "value": "true"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "548"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"224-BYRoVq4pPTIRY6760qaC7d8d1nw\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 13 Jun 2026 13:03:36 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"success\",\n    \"message\": \"User groups retrieved successfully\",\n    \"code\": 200,\n    \"data\": [\n        {\n            \"_id\": \"6a2d54b12c74439ab88b5a45\",\n            \"createdBy\": \"6a2d4e1e4cc9c0e2363b4585\",\n            \"participants\": [\n                \"69ff45fa3e36bf63ece5da81\",\n                \"69ff45ca3e36bf63ece5da80\",\n                \"6a2d4e1e4cc9c0e2363b4585\"\n            ],\n            \"chatType\": \"group\",\n            \"groupName\": \"Developers\",\n            \"groupImage\": \"https://res.cloudinary.com/dqaq6ju4d/image/upload/v1700000000/default-group-avatar.png\",\n            \"roomID\": \"d86e3088-1fb2-48ff-b36c-91fceff85afa\",\n            \"deletedAt\": null,\n            \"createdAt\": \"2026-06-13T13:01:37.954Z\",\n            \"updatedAt\": \"2026-06-13T13:01:37.954Z\"\n        }\n    ]\n}"
+            }
+          ]
+        },
+        {
+          "name": "send group message",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTJkNGUxZTRjYzljMGUyMzYzYjQ1ODUiLCJyb2xlIjoidXNlciIsImlhdCI6MTc4MTM1NTYxMCwiZXhwIjoxNzgxMzU5MjEwfQ.jaj--UOYYI0HRJbPPIyunttseef56c94WLT6qsL43U8",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"content\": \"Hello All\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/chat/room/d86e3088-1fb2-48ff-b36c-91fceff85afa/messages",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "chat",
+                "room",
+                "d86e3088-1fb2-48ff-b36c-91fceff85afa",
+                "messages"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "success",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"content\": \"Hello All\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/chat/room/d86e3088-1fb2-48ff-b36c-91fceff85afa/messages",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "chat",
+                    "room",
+                    "d86e3088-1fb2-48ff-b36c-91fceff85afa",
+                    "messages"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "http://localhost:5173"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Access-Control-Allow-Credentials",
+                  "value": "true"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "359"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"167-awF6jrJIaTS6XTsgWq+0sSRZeyI\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 13 Jun 2026 13:06:50 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"success\",\n    \"message\": \"Message sent successfully\",\n    \"code\": 201,\n    \"data\": {\n        \"chatId\": \"6a2d54b12c74439ab88b5a45\",\n        \"sender\": \"6a2d4e1e4cc9c0e2363b4585\",\n        \"content\": \"Hello All\",\n        \"attachmentUrl\": null,\n        \"readBy\": [\n            \"6a2d4e1e4cc9c0e2363b4585\"\n        ],\n        \"deletedAt\": null,\n        \"_id\": \"6a2d55ea2c74439ab88b5a46\",\n        \"createdAt\": \"2026-06-13T13:06:50.794Z\",\n        \"updatedAt\": \"2026-06-13T13:06:50.794Z\"\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "get group messages",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTJkNGUxZTRjYzljMGUyMzYzYjQ1ODUiLCJyb2xlIjoidXNlciIsImlhdCI6MTc4MTM1NTYxMCwiZXhwIjoxNzgxMzU5MjEwfQ.jaj--UOYYI0HRJbPPIyunttseef56c94WLT6qsL43U8",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/chat/room/d86e3088-1fb2-48ff-b36c-91fceff85afa/messages",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "chat",
+                "room",
+                "d86e3088-1fb2-48ff-b36c-91fceff85afa",
+                "messages"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "success",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/chat/room/d86e3088-1fb2-48ff-b36c-91fceff85afa/messages",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "chat",
+                    "room",
+                    "d86e3088-1fb2-48ff-b36c-91fceff85afa",
+                    "messages"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "http://localhost:5173"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Access-Control-Allow-Credentials",
+                  "value": "true"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "884"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"374-ut6y9FE4lyRqFKLf0X4SwWgqMng\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 13 Jun 2026 13:08:14 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"success\",\n    \"message\": \"Chat history retrieved successfully\",\n    \"code\": 200,\n    \"data\": {\n        \"messages\": [\n            {\n                \"_id\": \"6a2d55ea2c74439ab88b5a46\",\n                \"chatId\": \"6a2d54b12c74439ab88b5a45\",\n                \"sender\": {\n                    \"_id\": \"6a2d4e1e4cc9c0e2363b4585\",\n                    \"username\": \"eslam_user\"\n                },\n                \"content\": \"Hello All\",\n                \"attachmentUrl\": null,\n                \"readBy\": [\n                    \"6a2d4e1e4cc9c0e2363b4585\"\n                ],\n                \"deletedAt\": null,\n                \"createdAt\": \"2026-06-13T13:06:50.794Z\",\n                \"updatedAt\": \"2026-06-13T13:06:50.794Z\"\n            }\n        ],\n        \"chat\": {\n            \"_id\": \"6a2d54b12c74439ab88b5a45\",\n            \"createdBy\": \"6a2d4e1e4cc9c0e2363b4585\",\n            \"participants\": [\n                \"69ff45fa3e36bf63ece5da81\",\n                \"69ff45ca3e36bf63ece5da80\",\n                \"6a2d4e1e4cc9c0e2363b4585\"\n            ],\n            \"chatType\": \"group\",\n            \"groupName\": \"Developers\",\n            \"groupImage\": \"https://res.cloudinary.com/dqaq6ju4d/image/upload/v1700000000/default-group-avatar.png\",\n            \"roomID\": \"d86e3088-1fb2-48ff-b36c-91fceff85afa\",\n            \"deletedAt\": null,\n            \"createdAt\": \"2026-06-13T13:01:37.954Z\",\n            \"updatedAt\": \"2026-06-13T13:01:37.954Z\"\n        }\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Initialize / Open a Direct Chat",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTJkNGUxZTRjYzljMGUyMzYzYjQ1ODUiLCJyb2xlIjoidXNlciIsImlhdCI6MTc4MTM1Njk2MywiZXhwIjoxNzgxMzYwNTYzfQ.yZz6wP-NKb4qyrmBjfv-tB5PUC5C4TwSNKC-CeOBksE",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"recipientId\": \"69ff45ca3e36bf63ece5da80\"\r\n\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/chat/direct",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "chat",
+                "direct"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "success",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"recipientId\": \"69ff45ca3e36bf63ece5da80\"\r\n\r\n}\r\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/chat/direct",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "chat",
+                    "direct"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "http://localhost:5173"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Access-Control-Allow-Credentials",
+                  "value": "true"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "497"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"1f1-iMOSe/N0nZRFDH3gtNGmIilSfBk\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 13 Jun 2026 13:27:59 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"success\",\n    \"message\": \"Direct chat initialized successfully\",\n    \"code\": 200,\n    \"data\": {\n        \"_id\": \"6a2d59b4508cfd0705045930\",\n        \"createdBy\": \"6a2d4e1e4cc9c0e2363b4585\",\n        \"participants\": [\n            \"6a2d4e1e4cc9c0e2363b4585\",\n            \"69ff45ca3e36bf63ece5da80\"\n        ],\n        \"chatType\": \"direct\",\n        \"groupImage\": \"https://res.cloudinary.com/dqaq6ju4d/image/upload/v1700000000/default-group-avatar.png\",\n        \"roomID\": \"445830cc-1e3f-4a39-aaa3-296181205258\",\n        \"deletedAt\": null,\n        \"createdAt\": \"2026-06-13T13:23:00.929Z\",\n        \"updatedAt\": \"2026-06-13T13:23:00.929Z\"\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Send a Message (User A → User B)",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTJkNGUxZTRjYzljMGUyMzYzYjQ1ODUiLCJyb2xlIjoidXNlciIsImlhdCI6MTc4MTM1Njk2MywiZXhwIjoxNzgxMzYwNTYzfQ.yZz6wP-NKb4qyrmBjfv-tB5PUC5C4TwSNKC-CeOBksE",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"content\": \"Hey! How are you?\"\r\n}\r\n\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/chat/room/445830cc-1e3f-4a39-aaa3-296181205258/messages",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "chat",
+                "room",
+                "445830cc-1e3f-4a39-aaa3-296181205258",
+                "messages"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "success",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"content\": \"Hey! How are you?\"\r\n}\r\n\r\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/chat/room/445830cc-1e3f-4a39-aaa3-296181205258/messages",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "chat",
+                    "room",
+                    "445830cc-1e3f-4a39-aaa3-296181205258",
+                    "messages"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "http://localhost:5173"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Access-Control-Allow-Credentials",
+                  "value": "true"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "367"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"16f-nzR/vZPyZ8+dVwt6tbBhkgylvCQ\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 13 Jun 2026 13:28:10 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"success\",\n    \"message\": \"Message sent successfully\",\n    \"code\": 201,\n    \"data\": {\n        \"chatId\": \"6a2d59b4508cfd0705045930\",\n        \"sender\": \"6a2d4e1e4cc9c0e2363b4585\",\n        \"content\": \"Hey! How are you?\",\n        \"attachmentUrl\": null,\n        \"readBy\": [\n            \"6a2d4e1e4cc9c0e2363b4585\"\n        ],\n        \"deletedAt\": null,\n        \"_id\": \"6a2d5aea508cfd0705045933\",\n        \"createdAt\": \"2026-06-13T13:28:10.575Z\",\n        \"updatedAt\": \"2026-06-13T13:28:10.575Z\"\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Send a Reply (User B → User A)",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTJkNGUxZTRjYzljMGUyMzYzYjQ1ODUiLCJyb2xlIjoidXNlciIsImlhdCI6MTc4MTM1Njk2MywiZXhwIjoxNzgxMzYwNTYzfQ.yZz6wP-NKb4qyrmBjfv-tB5PUC5C4TwSNKC-CeOBksE",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"content\": \"I'm fine, thanks!\"\r\n}\r\n\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/chat/room/445830cc-1e3f-4a39-aaa3-296181205258/messages",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "chat",
+                "room",
+                "445830cc-1e3f-4a39-aaa3-296181205258",
+                "messages"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Send a Reply (User B → User A)",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"content\": \"I'm fine, thanks!\"\r\n}\r\n\r\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/chat/room/445830cc-1e3f-4a39-aaa3-296181205258/messages",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "chat",
+                    "room",
+                    "445830cc-1e3f-4a39-aaa3-296181205258",
+                    "messages"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "http://localhost:5173"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Access-Control-Allow-Credentials",
+                  "value": "true"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "367"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"16f-dcHLcq5HxNzBr5hTJ0ENmmYKlGo\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 13 Jun 2026 13:26:22 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [
+                {
+                  "expires": "Invalid Date",
+                  "domain": "",
+                  "path": ""
+                }
+              ],
+              "body": "{\n    \"status\": \"success\",\n    \"message\": \"Message sent successfully\",\n    \"code\": 201,\n    \"data\": {\n        \"chatId\": \"6a2d59b4508cfd0705045930\",\n        \"sender\": \"6a2d4e1e4cc9c0e2363b4585\",\n        \"content\": \"I'm fine, thanks!\",\n        \"attachmentUrl\": null,\n        \"readBy\": [\n            \"6a2d4e1e4cc9c0e2363b4585\"\n        ],\n        \"deletedAt\": null,\n        \"_id\": \"6a2d5a7e508cfd0705045932\",\n        \"createdAt\": \"2026-06-13T13:26:22.637Z\",\n        \"updatedAt\": \"2026-06-13T13:26:22.637Z\"\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get all messages",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTJkNGUxZTRjYzljMGUyMzYzYjQ1ODUiLCJyb2xlIjoidXNlciIsImlhdCI6MTc4MTM1Njk2MywiZXhwIjoxNzgxMzYwNTYzfQ.yZz6wP-NKb4qyrmBjfv-tB5PUC5C4TwSNKC-CeOBksE",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/chat/room/445830cc-1e3f-4a39-aaa3-296181205258/messages?page=1&limit=20",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "chat",
+                "room",
+                "445830cc-1e3f-4a39-aaa3-296181205258",
+                "messages"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "20"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "sucess",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/chat/room/445830cc-1e3f-4a39-aaa3-296181205258/messages?page=1&limit=20",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "chat",
+                    "room",
+                    "445830cc-1e3f-4a39-aaa3-296181205258",
+                    "messages"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "http://localhost:5173"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Access-Control-Allow-Credentials",
+                  "value": "true"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "1164"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"48c-slNtRk5HtTm2loWP6Z+f40PICnM\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 13 Jun 2026 13:27:21 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"status\": \"success\",\n    \"message\": \"Chat history retrieved successfully\",\n    \"code\": 200,\n    \"data\": {\n        \"messages\": [\n            {\n                \"_id\": \"6a2d5a0d508cfd0705045931\",\n                \"chatId\": \"6a2d59b4508cfd0705045930\",\n                \"sender\": {\n                    \"_id\": \"6a2d4e1e4cc9c0e2363b4585\",\n                    \"username\": \"eslam_user\"\n                },\n                \"content\": \"Hey! How are you?\",\n                \"attachmentUrl\": null,\n                \"readBy\": [\n                    \"6a2d4e1e4cc9c0e2363b4585\"\n                ],\n                \"deletedAt\": null,\n                \"createdAt\": \"2026-06-13T13:24:29.605Z\",\n                \"updatedAt\": \"2026-06-13T13:24:29.605Z\"\n            },\n            {\n                \"_id\": \"6a2d5a7e508cfd0705045932\",\n                \"chatId\": \"6a2d59b4508cfd0705045930\",\n                \"sender\": {\n                    \"_id\": \"6a2d4e1e4cc9c0e2363b4585\",\n                    \"username\": \"eslam_user\"\n                },\n                \"content\": \"I'm fine, thanks!\",\n                \"attachmentUrl\": null,\n                \"readBy\": [\n                    \"6a2d4e1e4cc9c0e2363b4585\"\n                ],\n                \"deletedAt\": null,\n                \"createdAt\": \"2026-06-13T13:26:22.637Z\",\n                \"updatedAt\": \"2026-06-13T13:26:22.637Z\"\n            }\n        ],\n        \"chat\": {\n            \"_id\": \"6a2d59b4508cfd0705045930\",\n            \"createdBy\": \"6a2d4e1e4cc9c0e2363b4585\",\n            \"participants\": [\n                \"6a2d4e1e4cc9c0e2363b4585\",\n                \"69ff45ca3e36bf63ece5da80\"\n            ],\n            \"chatType\": \"direct\",\n            \"groupImage\": \"https://res.cloudinary.com/dqaq6ju4d/image/upload/v1700000000/default-group-avatar.png\",\n            \"roomID\": \"445830cc-1e3f-4a39-aaa3-296181205258\",\n            \"deletedAt\": null,\n            \"createdAt\": \"2026-06-13T13:23:00.929Z\",\n            \"updatedAt\": \"2026-06-13T13:23:00.929Z\"\n        }\n    }\n}"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000"
+    },
+    {
+      "key": "accessToken",
+      "value": ""
+    },
+    {
+      "key": "refreshToken",
+      "value": ""
+    }
+  ]
+}
